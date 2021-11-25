@@ -14,7 +14,7 @@ output "subnet_id" {
 }
 
 resource "azurerm_public_ip" "myterraformpublicip" {
-  name                = "myDaleIP"
+  name                = "myPublicIP"
   location            = "Canada East"
   resource_group_name = "TrainingResourceGroup"
   allocation_method   = "Dynamic"
