@@ -14,7 +14,7 @@ output "subnet_id" {
 }
 
 resource "azurerm_public_ip" "myterraformpublicip" {
-  name                = "myPublicDaleIP"
+  name                = "myPublicIP"
   location            = "Canada East"
   resource_group_name = "TrainingResourceGroup"
   allocation_method   = "Dynamic"
@@ -25,7 +25,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 }
 
 resource "azurerm_network_interface" "myterraformnic" {
-  name                = "myDaleNIC"
+  name                = "myNIC"
   location            = "Canada East"
   resource_group_name = "TrainingResourceGroup"
 
@@ -42,14 +42,14 @@ resource "azurerm_network_interface" "myterraformnic" {
 }
 
 resource "azurerm_linux_virtual_machine" "myterraformvm" {
-  name                  = "myDaleVM"
+  name                  = "myVM"
   location              = "Canada East"
   resource_group_name   = "TrainingResourceGroup"
   network_interface_ids = [azurerm_network_interface.myterraformnic.id]
   size                  = "Standard_DS1_v2"
 
   os_disk {
-    name                 = "myDaleOsDisk"
+    name                 = "myOsDisk"
     caching              = "ReadWrite"
     storage_account_type = "Premium_LRS"
   }
@@ -61,7 +61,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
     version   = "latest"
   }
 
-  computer_name                   = "myDalevm1"
+  computer_name                   = "myvm1"
   disable_password_authentication = "false"
   admin_username                  = var.ansible_user
   admin_password                  = var.ansible_pass
