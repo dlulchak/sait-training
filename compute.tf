@@ -14,7 +14,7 @@ output "subnet_id" {
 }
 
 resource "azurerm_public_ip" "myterraformpublicip" {
-  name                = "myTESTPublicIP"
+  name                = "myPublicIP"
   location            = "Canada East"
   resource_group_name = "TrainingResourceGroup"
   allocation_method   = "Dynamic"
@@ -25,7 +25,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 }
 
 resource "azurerm_network_interface" "myterraformnic" {
-  name                = "myTESTNIC"
+  name                = "myNIC"
   location            = "Canada East"
   resource_group_name = "TrainingResourceGroup"
 
@@ -42,14 +42,14 @@ resource "azurerm_network_interface" "myterraformnic" {
 }
 
 resource "azurerm_linux_virtual_machine" "myterraformvm" {
-  name                  = "myTESTVM"
+  name                  = "myVM"
   location              = "Canada East"
   resource_group_name   = "TrainingResourceGroup"
   network_interface_ids = [azurerm_network_interface.myterraformnic.id]
   size                  = "Standard_DS1_v2"
 
   os_disk {
-    name                 = "myTESTOsDisk"
+    name                 = "myOsDisk"
     caching              = "ReadWrite"
     storage_account_type = "Premium_LRS"
   }
